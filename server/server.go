@@ -16,8 +16,8 @@ type Server struct {
 }
 
 func (s *Server) GetTransmitData(ctx context.Context, in *TCP.ClientHandshake) (*TCP.ServerHandshake, error) {
-	fmt.Printf("Received XXX request")
-	return &TCP.ServerHandshake{Reply: "Your reply here"}, nil
+	fmt.Printf("Received ClientHandshake request")
+	return &TCP.ServerHandshake{Reply: "I got your handshake!"}, nil
 }
 
 func main() {

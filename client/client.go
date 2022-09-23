@@ -24,17 +24,17 @@ func main() {
 	//  Create new Client from generated gRPC code from proto
 	c := TCP.NewTransmitDataClient(conn)
 
-	SendRequest(c)
+	clientHandshake := &TCP.ClientHandshake{}
+
+	response, err := c.SendHandshake(context.Background(), clientHandshake)
+	if err != nil {
+		log.Fatalf("Error when calling SendHandshake: %s", err)
+	}
+
+	fmt.Printf("Response from the Server: %s \n", response.Reply)
 }
 
 func SendRequest(c TCP.TransmitDataClient) {
 	// Between the curly brackets are nothing, because the .proto file expects no input.
-	message := TCP.ClientHandshake{}
 
-	response, err := c.GetTransmitData(context.Background(), &message)
-	if err != nil {
-		log.Fatalf("Error when calling XXX: %s", err)
-	}
-
-	fmt.Printf("Response from the Server: %s \n", response.Reply)
 }

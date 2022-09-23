@@ -9,7 +9,9 @@ service transmitData {
     rpc sendData (ClientData) returns (ServerHandshake) {}
 }
 
-message ClientHandshake {}
+message ClientHandshake {
+    string message = 1;
+}
 
 message ServerHandshake {
     string reply = 1;
