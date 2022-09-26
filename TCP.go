@@ -32,7 +32,7 @@ func main() {
 
 	go serverThread(&server)
 	go clientThread(&client)
-	time.Sleep(1000 * time.Millisecond)
+	time.Sleep(10000 * time.Millisecond)
 }
 
 func serverThread(s *Server) {
@@ -95,8 +95,9 @@ func clientThread(c *Client) {
 
 	fmt.Printf("Client received ACK after data transfer: %d \n", message.ack)
 	if message.ack != syn+1 {
-		fmt.Println("Wrong SYN number")
+		fmt.Printf("Wrong SYN number\n")
 	}
 
-	fmt.Printf("Data transfer succesful!")
+	fmt.Printf("Data transfer succesful!\n")
+	fmt.Printf("Program will exit soon\n")
 }
